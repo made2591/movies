@@ -1,70 +1,15 @@
-<!-- <ul>
-<li *ngFor="let user of users">{{ user.name }}</li>
-</ul>-->
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="over" [(opened)]="opened" (opened)="open = !open;" (closed)="open = !open;">
+    <mat-list>
+      <mat-list-item> Pepper </mat-list-item>
+      <mat-list-item> Salt </mat-list-item>
+      <mat-list-item> Paprika </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
 
-<main role="main" class="search-results"
-      infiniteScroll
-      [infiniteScrollDistance]="2"
-      [infiniteScrollThrottle]="50"
-      (scrolled)="onScroll()"
-      [scrollWindow]="false">
-  <section class="jumbotron text-center">
-    <div class="container">
-      <p>{{apiKey}} - {{selectedLanguage}}</p>
-      <!--<h1 class="jumbotron-heading">Search for a movie</h1>-->
-      <div class="row">
-        <div class="col-md-12">
-          <div class="input-group" id="adv-search">
-            <input type="text" class="form-control" (keyup)="searchTerm.next($event.target.value)"/>
-            <!--<input type="text" class="form-control" placeholder="Search for snippets" />-->
-            <div class="input-group-btn">
-              <div class="btn-group" role="group">
-                <div class="dropdown dropdown-lg">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                          aria-expanded="false"><span class="caret"></span></button>
-                  <div class="dropdown-menu dropdown-menu-right" role="menu">
-                    <div class="form-group">
-                      <label for="apiKey">Api Key</label>
-                      <input type="text"  class="form-control" name="apiKey" id="apiKey" [(ngModel)]="apiKey">
-                    </div>
-                    <div class="form-group">
-                      <label for="language">Language</label>
-                      <select class="form-control" name="language" id="language" [(ngModel)]="selectedLanguage">
-                        <option *ngFor="let language of languages" [value]="language.id">{{language.name}}</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-      <div class="card-columns" *ngIf="results">
-        <div *ngFor="let movie of results" class="card">
-          <img *ngIf="movie.poster_path" class="card-img-top" data-src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}"
-               alt="Thumbnail [100%x500]" src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}"
-               data-holder-rendered="true" style="height: 500px; width: 100%; display: block;">
-          <div class="card-body">
-            <h5 class="card-title">{{ movie.title }} ({{ movie.original_title }})</h5>
-            <p class="card-text">{{ movie.overview }}</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">{{ movie.vote_count }}</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">{{ movie.vote_average }}</button>
-              </div>
-              <small class="text-muted">9 mins</small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</main>
-
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <mat-button-toggle class="mat-flat-button" mat-button (click)="sidenav.toggle()">Movies</mat-button-toggle>
+    </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>

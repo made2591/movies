@@ -1,6 +1,13 @@
-# Mean
+# Temp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.5.
+
+npm install -g @angular/cli@latest
+ng new movies
+cd movies
+npm install --save hammerjs
+npm install --save @angular/material@latest @angular/cdk@latest
+npm install --save @angular/animations@latest
 
 ## Development server
 

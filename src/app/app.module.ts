@@ -1,42 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from "@angular/forms";
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MymaterialModule } from './mymaterial/mymaterial.module';
+import { CommonMaterialModule } from "./common-material/common-material.module";
 
-// Import the Http Module and our Data Service
-import { HttpModule } from '@angular/http';
-import { DataService } from './data.service';
-import { HeaderComponent } from './header/header.component';
-import { RouterModule, Routes } from '@angular/router';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-
-const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: 'find', redirectTo: 'search'},
-  {path: 'home', component: AppComponent},
-  {path: '**', component: AppComponent}
-];
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    HttpModule,
     BrowserAnimationsModule,
-    MymaterialModule,
-    InfiniteScrollModule,
-    RouterModule.forRoot(routes, {useHash: true})
+    CommonMaterialModule
   ],
-  providers: [DataService],
-  bootstrap: [AppComponent, HeaderComponent]
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
