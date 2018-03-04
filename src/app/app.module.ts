@@ -4,6 +4,7 @@ import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonMaterialModule } from "./common-material/common-material.module";
 import { RouterModule, Routes } from "@angular/router";
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 
@@ -13,13 +14,17 @@ import { TheaterMoviesComponent } from './theater-movies/theater-movies.componen
 import { RecommendedMoviesComponent } from './recommended-movies/recommended-movies.component';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
+  { path: 'login', component: LoginComponent, pathMatch: 'full' },
+  { path: 'signUp', component: SignupComponent, pathMatch: 'full' },
   { path: 'popular', component: PopularMoviesComponent },
   { path: 'search', component: SearchMoviesComponent },
   { path: 'theater', component: TheaterMoviesComponent },
   { path: 'recommended', component: RecommendedMoviesComponent },
-  { path: '', redirectTo: '/popular', pathMatch: 'full'},
+  { path: '', redirectTo: 'popular', pathMatch: 'full'},
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -30,11 +35,14 @@ const routes: Routes = [
     PopularMoviesComponent,
     SearchMoviesComponent,
     TheaterMoviesComponent,
-    RecommendedMoviesComponent
+    RecommendedMoviesComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     CommonMaterialModule,
     RouterModule.forRoot(

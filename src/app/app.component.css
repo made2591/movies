@@ -1,0 +1,26 @@
+.mat-grid-tile {
+  background: rgba(0, 0, 0, .87);
+}
+
+.pink {
+  background: #e91e63;
+}
+
+.sidenav {
+  width: 15%;
+  background: rgba(0, 0, 0, .87);
+}
+
+.toolbar {
+  color: white;
+}
+
+.toolbar > mat-button-toggle, a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.popular-tile {
+  /*background: url("assets/img/popular.png");*/
+}
