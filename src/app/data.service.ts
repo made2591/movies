@@ -1,13 +1,13 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Http, Response } from "@angular/http";
 import { Observable } from "rxjs/Observable";
-import { TMDBResponse, Movie } from "./interfaces/models";
+import { TMDBResponse, TMDBMovie } from "./interfaces/models";
 import "rxjs/Rx";
 
 @Injectable()
 export class DataService {
 
-  private _apiBaseUrl = "http://localhost:3000";
+  private _apiBaseUrl = "http://localhost:4200";
   private _discoverUrl = "/discover/movies";
   
   constructor(private http: Http) { }

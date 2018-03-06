@@ -1,21 +1,18 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="push" [(opened)]="opened" (opened)="open = !open;" (closed)="open = !open;" class="sidenav">
     <mat-list>
-      <mat-list-item> Pepper </mat-list-item>
-      <mat-list-item> Salt </mat-list-item>
-      <mat-list-item> Paprika </mat-list-item>
+      <mat-list-item (click)="sidenav.toggle()"><a class="mat-button" routerLink="/popular" routerLinkActive="active"><i class="fa fa-fire" style="font-size:18px;"></i>&nbsp;Popular</a></mat-list-item>
+      <mat-list-item (click)="sidenav.toggle()"><a class="mat-button" routerLink="/search" routerLinkActive="active"><i class="fa fa-search" style="font-size:18px;"></i>&nbsp;Search</a></mat-list-item>
+      <mat-list-item (click)="sidenav.toggle()"> <a class="mat-button" routerLink="/theater" routerLinkActive="active"><i class="fa fa-film" style="font-size:18px;"></i>&nbsp;Theater</a></mat-list-item>
+      <mat-list-item (click)="sidenav.toggle()"><a class="mat-button" routerLink="/recommended" routerLinkActive="active"><i class="fa fa-heart" style="font-size:18px;"></i>&nbsp;Recommended</a></mat-list-item>
     </mat-list>
   </mat-sidenav>
 
   <mat-sidenav-content class="sidenav-content">
     <mat-toolbar class="mat-elevation-z6 toolbar pink">
       <mat-button-toggle class="mat-flat-button pink" mat-button (click)="sidenav.toggle()"><i class="fa fa-bars" style="font-size:18px;"></i>&nbsp;Movies</mat-button-toggle>
-      <a class="mat-flat-button pink" routerLink="/login" routerLinkActive="active"><i class="fa fa-fire" style="font-size:18px;"></i>&nbsp;Login</a>
-      <a class="mat-flat-button pink" routerLink="/popular" routerLinkActive="active"><i class="fa fa-fire" style="font-size:18px;"></i>&nbsp;Popular</a>
-      <a class="mat-flat-button pink" routerLink="/search" routerLinkActive="active"><i class="fa fa-search" style="font-size:18px;"></i>&nbsp;Search</a>
-      <a class="mat-flat-button pink" routerLink="/theater" routerLinkActive="active"><i class="fa fa-film" style="font-size:18px;"></i>&nbsp;Theater</a>
-      <a class="mat-flat-button pink" routerLink="/recommended" routerLinkActive="active"><i class="fa fa-heart" style="font-size:18px;"></i>&nbsp;Recommended</a>
       <mat-divider></mat-divider>
+      <a class="mat-flat-button pink" routerLink="/login" routerLinkActive="active"><i class="fa fa-fire" style="font-size:18px;"></i>&nbsp;Login</a>
       <a class="mat-flat-button pink" href="https://github.com/made2591/movies"><i class="fa fa-github" style="font-size:18px;"></i>&nbsp;Github</a>
     </mat-toolbar>
     <router-outlet></router-outlet>

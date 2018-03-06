@@ -1,11 +1,18 @@
-export interface TMDBResponse {
+export class User {
+  username: string;
+  password: string;
+  api_key: string;
+  liked: Array<TMDBMovie>;
+}
+
+export class TMDBResponse {
   page: number;
-  results: Array<Movie>;
+  results: Array<TMDBMovie>;
   total_results: number;
   total_pages: number;
 }
 
-export interface Movie {
+export class TMDBMovie {
   poster_path: string;
   adult: boolean;
   overview: string;

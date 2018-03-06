@@ -11,7 +11,7 @@ const Movie = require("../models/movie");
 const url = 'https://api.themoviedb.org/3';
 
 
-router.post('/signup', function(req, res) {
+router.post('/signUp', function(req, res) {
   if (!req.body.username || !req.body.password) {
     res.json({success: false, msg: 'Please pass username and password.'});
   } else {
@@ -29,7 +29,7 @@ router.post('/signup', function(req, res) {
   }
 });
 
-router.post('/signin', function(req, res) {
+router.post('/signIn', function(req, res) {
   User.findOne({
     username: req.body.username
   }, function(err, user) {

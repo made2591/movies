@@ -6,6 +6,7 @@ import { tap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { environment } from '../../environments/environment';
 import { HttpHeaders } from "@angular/common/http";
+import { User } from "../interfaces/models";
 
 @Component({
   selector: 'app-signup',
@@ -14,12 +15,12 @@ import { HttpHeaders } from "@angular/common/http";
 })
 export class SignupComponent implements OnInit {
   
-  signupData: any;
+  user: User;
   message: any;
   httpOptions: any;
   
   constructor(private http: HttpClient, private router: Router) {
-    this.signupData = { username:'', password:'' };
+    this.user = new User();
     this.message = '';
     this.httpOptions = {
       headers: new HttpHeaders({
@@ -32,8 +33,12 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
   }
   
+  prepareUser() {
+    return { 'username' : this.user.username, 'password' : this.user.password, 'api_key' : this.user.api_key };
+  }
+  
   signup() {
-    this.http.post(environment.apiUrl + '/api/signup', this.signupData, this.httpOptions).subscribe(resp => {
+    this.http.post(environment.apiUrl + '/api/signUp', this.prepareUser(), this.httpOptions).subscribe(resp => {
       console.log(resp);
       this.router.navigate(['login']);
     }, err => {
