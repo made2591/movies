@@ -6,6 +6,7 @@ import { tap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { environment } from "../../environments/environment";
 import { User } from "../interfaces/models";
+import { HttpHeaders } from "@angular/common/http";
 
 @Component({
   selector: 'app-login',
@@ -14,20 +15,27 @@ import { User } from "../interfaces/models";
 })
 export class LoginComponent implements OnInit {
   
-  user: any;
+  user: User;
   message: string;
+  httpOptions: any;
   data: any;
   
   constructor(private http: HttpClient, private router: Router) {
     this.user = new User();
     this.message = '';
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      })
+    };
   }
 
   ngOnInit() {
   }
   
   login() {
-    this.http.post(environment.apiUrl + '/api/signIn', JSON.stringify(this.user)).subscribe(resp => {
+    this.http.post(environment.apiUrl + '/api/signIn', JSON.stringify(this.user), this.httpOptions).subscribe(resp => {
       this.data = resp;
       localStorage.setItem('jwtToken', this.data.token);
       this.router.navigate(['recommended']);

@@ -32,6 +32,7 @@ router.post('/signUp', function(req, res) {
 });
 
 router.post('/signIn', function(req, res) {
+  console.log(req.body);
   User.findOne({
     email: req.body.email
   }, function(err, user) {
