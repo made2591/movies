@@ -7,17 +7,19 @@ const jwt = require('jsonwebtoken');
 const router = express.Router();
 const User = require("../models/user");
 const Movie = require("../models/movie");
-
 const url = 'https://api.themoviedb.org/3';
 
-
 router.post('/signUp', function(req, res) {
-  if (!req.body.username || !req.body.password) {
+  if (!req.body.email || !req.body.password) {
     res.json({success: false, msg: 'Please pass username and password.'});
   } else {
     var newUser = new User({
-      username: req.body.username,
-      password: req.body.password
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      email: req.body.email,
+      password: req.body.password,
+      api_key: req.body.api_key,
+      liked: req.body.liked
     });
     // save the user
     newUser.save(function(err) {
@@ -31,7 +33,7 @@ router.post('/signUp', function(req, res) {
 
 router.post('/signIn', function(req, res) {
   User.findOne({
-    username: req.body.username
+    email: req.body.email
   }, function(err, user) {
     if (err) throw err;
 
@@ -58,12 +60,12 @@ router.post('/add/movie', passport.authenticate('jwt', { session: false}), funct
   if (token) {
     console.log(req.body);
     var newMovie = new Movie({
+      id: req.body.id,
       poster_path: req.body.poster_path,
       adult: req.body.adult,
       overview: req.body.overview,
       release_date: req.body.release_date,
       genre_ids: req.body.genre_ids,
-      id: req.body.id,
       original_title: req.body.original_title,
       original_language: req.body.original_language,
       title: req.body.title,

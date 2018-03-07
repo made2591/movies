@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Router } from "@angular/router";
-import { Observable } from 'rxjs/Observable';
-import { tap, catchError } from 'rxjs/operators';
-import { of } from 'rxjs/observable/of';
-import { environment } from '../../environments/environment';
-import { HttpHeaders } from "@angular/common/http";
-import { User } from "../interfaces/models";
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Router} from "@angular/router";
+import {environment} from '../../environments/environment';
+import {HttpHeaders} from "@angular/common/http";
+import {User} from "../interfaces/models";
+import {Observable} from 'rxjs/Observable';
+import {tap, catchError} from 'rxjs/operators';
+import {of} from 'rxjs/observable/of';
 
 @Component({
   selector: 'app-signup',
@@ -29,16 +29,12 @@ export class SignupComponent implements OnInit {
       })
     };
   }
-
+  
   ngOnInit() {
   }
   
-  prepareUser() {
-    return { 'username' : this.user.username, 'password' : this.user.password, 'api_key' : this.user.api_key };
-  }
-  
   signup() {
-    this.http.post(environment.apiUrl + '/api/signUp', this.prepareUser(), this.httpOptions).subscribe(resp => {
+    this.http.post(environment.apiUrl + '/api/signUp', JSON.stringify(this.user), this.httpOptions).subscribe(resp => {
       console.log(resp);
       this.router.navigate(['login']);
     }, err => {

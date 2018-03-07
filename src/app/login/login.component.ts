@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { tap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { environment } from "../../environments/environment";
+import { User } from "../interfaces/models";
 
 @Component({
   selector: 'app-login',
@@ -13,12 +14,12 @@ import { environment } from "../../environments/environment";
 })
 export class LoginComponent implements OnInit {
   
-  loginData: any;
+  user: any;
   message: string;
   data: any;
   
   constructor(private http: HttpClient, private router: Router) {
-    this.loginData = { username:'', password:'' };
+    this.user = new User();
     this.message = '';
   }
 
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
   }
   
   login() {
-    this.http.post(environment.apiUrl + '/api/signIn',this.loginData).subscribe(resp => {
+    this.http.post(environment.apiUrl + '/api/signIn', JSON.stringify(this.user)).subscribe(resp => {
       this.data = resp;
       localStorage.setItem('jwtToken', this.data.token);
       this.router.navigate(['recommended']);

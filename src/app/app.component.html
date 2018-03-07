@@ -1,20 +1,19 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav mode="push" [(opened)]="opened" (opened)="open = !open;" (closed)="open = !open;" class="sidenav">
-    <mat-list>
-      <mat-list-item (click)="sidenav.toggle()"><a class="mat-button" routerLink="/popular" routerLinkActive="active"><i class="fa fa-fire" style="font-size:18px;"></i>&nbsp;Popular</a></mat-list-item>
-      <mat-list-item (click)="sidenav.toggle()"><a class="mat-button" routerLink="/search" routerLinkActive="active"><i class="fa fa-search" style="font-size:18px;"></i>&nbsp;Search</a></mat-list-item>
-      <mat-list-item (click)="sidenav.toggle()"> <a class="mat-button" routerLink="/theater" routerLinkActive="active"><i class="fa fa-film" style="font-size:18px;"></i>&nbsp;Theater</a></mat-list-item>
-      <mat-list-item (click)="sidenav.toggle()"><a class="mat-button" routerLink="/recommended" routerLinkActive="active"><i class="fa fa-heart" style="font-size:18px;"></i>&nbsp;Recommended</a></mat-list-item>
-    </mat-list>
-  </mat-sidenav>
-
-  <mat-sidenav-content class="sidenav-content">
-    <mat-toolbar class="mat-elevation-z6 toolbar pink">
-      <mat-button-toggle class="mat-flat-button pink" mat-button (click)="sidenav.toggle()"><i class="fa fa-bars" style="font-size:18px;"></i>&nbsp;Movies</mat-button-toggle>
-      <mat-divider></mat-divider>
-      <a class="mat-flat-button pink" routerLink="/login" routerLinkActive="active"><i class="fa fa-fire" style="font-size:18px;"></i>&nbsp;Login</a>
-      <a class="mat-flat-button pink" href="https://github.com/made2591/movies"><i class="fa fa-github" style="font-size:18px;"></i>&nbsp;Github</a>
-    </mat-toolbar>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<ul id="dropdown1" class="dropdown-content">
+  <li><a class="mat-button" routerLink="/login" routerLinkActive="active"><i class="fa fa-fire" style="font-size:18px;"></i>&nbsp;Login</a></li>
+  <li><a class="mat-button" routerLink="/logout" routerLinkActive="active"><i class="fa fa-fire" style="font-size:18px;"></i>&nbsp;Logout</a></li>
+  <li class="divider"></li>
+  <li><a class="mat-button" href="https://github.com/made2591/movies"><i class="fa fa-github" style="font-size:18px;"></i>&nbsp;Github</a></li>
+</ul>
+<nav>
+  <div class="nav-wrapper">
+    <a href="#!" class="brand-logo"><i class="material-icons">movie</i>Movies</a>
+    <ul class="right hide-on-med-and-down">
+      <li><a class="mat-button" routerLink="/popular" routerLinkActive="active"><i class="fa fa-fire" style="font-size:18px;"></i>&nbsp;Popular</a></li>
+      <li><a class="mat-button" routerLink="/search" routerLinkActive="active"><i class="fa fa-fire" style="font-size:18px;"></i>&nbsp;Search</a></li>
+      <li><a class="mat-button" routerLink="/theater" routerLinkActive="active"><i class="fa fa-fire" style="font-size:18px;"></i>&nbsp;Theater</a></li>
+      <li><a class="mat-button" routerLink="/recommended" routerLinkActive="active"><i class="fa fa-fire" style="font-size:18px;"></i>&nbsp;Recommended</a></li>
+      <li><a class="dropdown-button" href="#!" (click)="$('.dropdown-button').dropdown();" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+    </ul>
+  </div>
+</nav>
+<router-outlet></router-outlet>

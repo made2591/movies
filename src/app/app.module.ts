@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonMaterialModule } from "./common-material/common-material.module";
 import { RouterModule, Routes } from "@angular/router";
 import { HttpClientModule } from '@angular/common/http';
 
@@ -19,7 +17,8 @@ import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
-  { path: 'signUp', component: SignupComponent, pathMatch: 'full' },
+  { path: 'logout', component: LoginComponent, pathMatch: 'full' },
+  { path: 'signup', component: SignupComponent, pathMatch: 'full' },
   { path: 'popular', component: PopularMoviesComponent },
   { path: 'search', component: SearchMoviesComponent },
   { path: 'theater', component: TheaterMoviesComponent },
@@ -43,8 +42,6 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
-    CommonMaterialModule,
     RouterModule.forRoot(
       routes,
       { enableTracing: true } // <-- debugging purposes only
